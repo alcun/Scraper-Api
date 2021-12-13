@@ -16,16 +16,21 @@ class Scraper():
 
     quotes = r.html.find('div.quote')
 
-    for q in quotes:
-        print(q.find('span.text', first=True).text.strip())
+#Created dictionary
+#Author found in 'small' tag
 
+    for q in quotes:
+        item = {
+            'text': q.find('span.text', first=True).text.strip(),
+            'Author': q.find('small.author', first=True).text.strip()
+            }
+        print(item)
 
 
 quotes = Scraper()
 
 quotes.scrapedata('life')
 
-#At the point the program returns '200' which means it's working #
 
 # Here is an example of a quote via HTML inspect, we will be using it to point the scraper in the right place
 
