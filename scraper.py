@@ -5,6 +5,7 @@ from requests_html import HTMLSession
 # Here we create the class, method and use session obkect to scrape data #
 
 class Scraper():
+
   def scrapedata(self, tag):
     url = f'https://quotes.toscrape.com/tag/life/'
     s = HTMLSession()
@@ -13,10 +14,16 @@ class Scraper():
 
     qlist = []
 
+    quotes = r.html.find('div.quote')
+
+    for q in quotes:
+        print(q.find('span.text', first=True).text.strip())
+
+
 
 quotes = Scraper()
 
-quotes .scrapedata('life')
+quotes.scrapedata('life')
 
 #At the point the program returns '200' which means it's working #
 
