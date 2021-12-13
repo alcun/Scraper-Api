@@ -11,9 +11,7 @@ class Scraper():
     s = HTMLSession()
     r = s.get(url)
     print(r.status_code)
-
     qlist = []
-
     quotes = r.html.find('div.quote')
 
 #Created dictionary
@@ -25,7 +23,11 @@ class Scraper():
             'Author': q.find('small.author', first=True).text.strip()
             }
         print(item)
+        qlist.append(item)
 
+    return qlist
+
+#qlist is now stored as a variable 
 
 quotes = Scraper()
 
